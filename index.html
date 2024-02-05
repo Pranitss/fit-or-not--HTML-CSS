@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fit Check</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    form {
+        background: #fff;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"], select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    #result {
+        margin-top: 20px;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <form id="fitCheckForm">
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required><br>
+
+        <label for="weight">Weight (in kg):</label>
+        <input type="text" id="weight" name="weight" required><br>
+
+        <label for="bloodGroup">Blood Group:</label>
+        <select id="bloodGroup" name="bloodGroup">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="AB">AB</option>
+            <option value="O">O</option>
+        </select><br>
+
+        <input type="submit" value="Check Fit">
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("fitCheckForm").onsubmit = function(event) {
+            event.preventDefault();
+
+            var age = parseInt(document.getElementById("age").value);
+            var weight = parseFloat(document.getElementById("weight").value);
+            var bloodGroup = document.getElementById("bloodGroup").value;
+
+            var result = document.getElementById("result");
+            var message = "";
+
+            // Check fit based on generic criteria (you can modify this as needed)
+            if (age >= 18 && age <= 60 && weight >= 50 && weight <= 100) {
+                message = "You are fit.";
+            } else {
+                message = "You are not fit.";
+            }
+
+            result.innerHTML = message;
+        };
+    </script>
+</body>
+</html>
